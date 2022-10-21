@@ -1,0 +1,22 @@
+﻿@page "/login"
+@inject ShellNavigationManager Navigator
+
+<ContentPage @ref="loginPage">
+	<Button Text="Login"
+			HorizontalOptions="LayoutOptions.Center"
+			VerticalOptions="LayoutOptions.Center"
+			OnClick="OnLoginClicked" />
+</ContentPage>
+
+@code {
+	ContentPage loginPage;
+
+	protected override void OnInitialized()
+	{
+		//Maui.ContentPage thisPage = loginPage.NativeControl;
+		//Maui.Shell.SetNavBarIsVisible(thisPage, false);
+		//Maui.Shell.SetPresentationMode(thisPage, PresentationMode.Animated);
+	}
+
+	async Task OnLoginClicked() => await Navigator.NavigateToAsync("/home");
+}

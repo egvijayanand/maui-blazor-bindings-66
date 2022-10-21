@@ -1,0 +1,62 @@
+﻿@inject ShellNavigationManager Navigator
+
+<Shell>
+	@* Flyout items *@
+	<FlyoutItem Title="Home" Icon="homeIcon">
+		<ShellContent>
+			<HomePage />
+		</ShellContent>
+	</FlyoutItem>
+	<FlyoutItem Title="Search" Icon="searchIcon">
+		<ShellContent>
+			<SearchPage />
+		</ShellContent>
+	</FlyoutItem>
+	<FlyoutItem Title="Settings" Icon="settingsIcon">
+		<ShellContent>
+			<SettingsPage />
+		</ShellContent>
+	</FlyoutItem>
+	@* Menu items *@
+	<MenuItem Text="Logout" IconImageSource="logoutIcon" OnClick="OnLogoutClicked" />
+	@* Won't show up in the Flyout menu *@
+	<TabBar>
+		<Tab>
+			<ShellContent>
+				<LoginPage />
+			</ShellContent>
+		</Tab>
+	</TabBar>
+</Shell>
+
+@code {
+	ImageSource homeIcon = new FontImageSource()
+		{
+			FontFamily = FontAwesomeSolid,
+			Glyph = fas.IconFont.House,
+			Color = Black
+		};
+
+	ImageSource searchIcon = new FontImageSource()
+		{
+			FontFamily = FontAwesomeSolid,
+			Glyph = fas.IconFont.MagnifyingGlass,
+			Color = Black
+		};
+
+	ImageSource settingsIcon = new FontImageSource()
+		{
+			FontFamily = FontAwesomeSolid,
+			Glyph = fas.IconFont.Gear,
+			Color = Black
+		};
+
+	ImageSource logoutIcon = new FontImageSource()
+		{
+			FontFamily = FontAwesomeSolid,
+			Glyph = fas.IconFont.RightFromBracket,
+			Color = Black
+		};
+
+	async Task OnLogoutClicked() => await Navigator.NavigateToAsync("/login");
+}

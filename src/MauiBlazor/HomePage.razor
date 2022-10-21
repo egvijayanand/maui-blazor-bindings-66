@@ -1,0 +1,24 @@
+﻿@page "/home"
+@inject ShellNavigationManager Navigator
+
+<ContentPage>
+	<ToolbarItems>
+		<ToolbarItem Text="Search" IconImageSource="searchIcon" OnClick="OnSearchClicked" />
+	</ToolbarItems>
+	<ChildContent>
+		<Label Text="Home"
+			   HorizontalOptions="LayoutOptions.Center"
+			   VerticalOptions="LayoutOptions.Center" />
+	</ChildContent>
+</ContentPage>
+
+@code {
+	ImageSource searchIcon = new FontImageSource()
+		{
+			FontFamily = FontAwesomeSolid,
+			Glyph = fas.IconFont.MagnifyingGlass,
+			Color = Black
+		};
+
+	async Task OnSearchClicked() => await Navigator.NavigateToAsync("/search");
+}
